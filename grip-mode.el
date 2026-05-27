@@ -127,7 +127,7 @@ Support for markdown file only."
 (defvar-local grip--process nil
   "Handle to the inferior grip process.")
 
-(defvar-local grip--port 6418
+(defvar-local grip--port nil
   "Port to the grip port.")
 
 (defvar-local grip--preview-file nil
@@ -198,8 +198,8 @@ Use default browser unless `xwidget' is available."
               (grip-mode -1)
               (user-error "No grip command is available in PATH environment")))))
 
-    ;; Generate random port
-    (while (< grip--port 6419)
+    ;; Generate random port if not set
+    (unless grip--port
       (setq grip--port (random 65535)))
 
     (when grip--preview-file
