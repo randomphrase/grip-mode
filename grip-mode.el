@@ -229,6 +229,8 @@ Use default browser unless `xwidget' is available."
                               (format " *go-grip-%d*" grip--port)
                               "go-grip"
                               (format "--port=%d" grip--port)
+                              (when grip-preview-host
+                                (format "--host=%s" grip-preview-host))
                               "--browser=false"
                               "--bounding-box=false"
                               (format "%s.md" (file-name-base grip--preview-file)))))
